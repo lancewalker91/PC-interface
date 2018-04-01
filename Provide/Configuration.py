@@ -5,6 +5,12 @@ Updated on Mar 29 2018
 
 @update by: LT
 '''
+
+import time
+from datetime import datetime
+import calendar
+
+
 salt = "gn1002015"
 HostUrl = "http://test.gn100.com"
 version = "1.16.1"
@@ -33,6 +39,12 @@ class_id  = 353 #班级Id
 assitant_course= 11223
 assitant_course_class = 112
 
-#获取直播列表时间
-month = 3
-year = 2018
+#获取当前时间直播列表时间
+nowtime = time.localtime()
+month = nowtime.tm_mon
+year = nowtime.tm_year
+print(month,year)
+wday, monthRange = calendar.monthrange(nowtime.tm_year, nowtime.tm_mon)   # 得到本月的天数 第一返回为月第一日为星期几（0-6）, 第二返回为此月天数
+querytime1 = '{}-{}-1'.format(year,month)
+querytime2 = '{}-{}-{}'.format(year,month,monthRange)
+

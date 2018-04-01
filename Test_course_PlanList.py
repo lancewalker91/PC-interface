@@ -44,7 +44,7 @@ class Test_courseLivingPlan(unittest.TestCase):
                 break
 
         format = ["course_name","class_name","section_name","section_desc","course_type","plan_id","start_time","totaltime","teacher_id","teacher_real_name"]
-        query = {"start_time":"2018-03-01,2018-03-31","teacher_id":teacherId,"status":"1,2,3"}
+        query = {"start_time":"{},{}".format(Configuration.querytime1,Configuration.querytime2),"teacher_id":teacherId,"status":"1,2,3"}
         ob = {"start_time":"asc"}
         planList,ss = Seek.seekPlan(format, query,ob)
         ss.close()

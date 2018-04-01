@@ -13,7 +13,7 @@ import pymysql
 from Provide.post_params import Post_Params
 
 class Test_TeacherCourseList(unittest.TestCase):
-    """测试教师课程列表接口/teacher/PcCourseLis"""
+    """测试教师课程列表接口/teacher/PcCourseList"""
     def setUp(self):
         print('test start')
         self.url = Configuration.HostUrl +"/interface/teacher/PcCourseList"
