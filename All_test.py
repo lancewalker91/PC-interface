@@ -29,7 +29,7 @@ def send_email(file_new):
     smtp = smtplib.SMTP()
     smtp.connect('mail.yunke.com')
     smtp.login('litao@yunke.com','litao12')
-    smtp.sendmail('litao@yunke.com',['litao@yunke.com'],msgRoot.as_string())
+    smtp.sendmail('litao@yunke.com',['test@yunke.com'],msgRoot.as_string())
     smtp.quit()
     print('email has been send out!')
 def new_report(testreport):
@@ -40,8 +40,8 @@ def new_report(testreport):
     return file_new
 
 if __name__ == '__main__':
-    test_dir = r'C:\Users\Administrator\Desktop\PC-interface'
-    test_report = r'C:\Users\Administrator\Desktop'
+    test_dir = r'C:\apache-tomcat-9.0.5\webapps\Jenkins\workspace\PC-interface\PC-interface'
+    test_report = r'C:\apache-tomcat-9.0.5\webapps\Jenkins\workspace\PC-interface\PC-interface\HTML_report'
     discover = unittest.defaultTestLoader.discover(test_dir, pattern='Test*.py')
     now = time.strftime("%Y-%m-%d %H_%M_%S")
     fp = open( test_report + '\\' + now + '云课助手接口测试.html', 'wb')
