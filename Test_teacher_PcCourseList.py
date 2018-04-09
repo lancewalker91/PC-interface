@@ -163,9 +163,28 @@ class Test_TeacherCourseList(unittest.TestCase):
         self.assertGreaterEqual(int(CourseList[0]['userTotal']),int(CourseList[1]['userTotal']))
         self.assertGreaterEqual(int(CourseList[-2]['userTotal']),int(CourseList[-1]['userTotal']),"未按学生人数倒序排序")
 
-    
+    def test_5TeacherCourseSortByStudent(self):
+        '''班主任下课程--最新建课排序'''
+        self.params = {
+            "keywords": "",  # keywords不传为全搜
+            "length": 20,
+            "page": 1,
+            "sort": 3000,  # 1000 默认 2000 学生最多 3000 最新建课 4000 进行中(暂时没有)
+            "status": 0,  # 1 未开课  2 进行中  3 已完结
+            "teacherId": Configuration.teacherId,
+            "type": 0,  # 课程类型,0全部,1直播课,2录播课,3线下课
+            "userType": 1  # 1 讲师 2 助教
+        }
+        returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
+        s.close()
+        self.assertEqual(returnObj['code'], 0)
+        self.assertEqual(returnObj['message'], "success")
+        CourseList = returnObj['result']['list']['data']
+        self.assertEqual(CourseList[0]['courseName'],'testFor双师备课答题3Month')
+
     # 按课程类型筛选---直播课
-    def test_5TeacherCourseOfLiving(self):
+
+    def test_6TeacherCourseOfLiving(self):
         '''班主任下课程--直播课类型筛选'''
         self.params = {
             "keywords": "",  # keywords不传为全搜
@@ -189,6 +208,74 @@ class Test_TeacherCourseList(unittest.TestCase):
                 result =False
                 break
         self.assertTrue(result, "返回的课程包含非直播课")
+
+    def test_7TeacherCourseOfLiving(self):
+        '''班主任下课程--录播课类型筛选'''
+        self.params = {
+            "keywords": "",  # keywords不传为全搜
+            "length": 20,
+            "page": 1,
+            "sort": 1000,  # 1000 默认 2000 学生最多 3000 最新建课 4000 进行中(暂时没有)
+            "status": 0,  # 1 未开课  2 进行中  3 已完结
+            "teacherId": Configuration.teacherId,
+            "type": 2,  # 课程类型,0全部,1直播课,2录播课,3线下课
+            "userType": 1  # 1 讲师 2 助教
+        }
+        returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
+        s.close()
+        self.assertEqual(returnObj['code'], 0)
+        self.assertEqual(returnObj['message'], "success")
+        courseList= returnObj['result']['list']['data']
+        #判断返回的课程都是直播课
+        result = True
+        for course in courseList:
+            if int(course['courseType']) != 2:
+                result =False
+                break
+        self.assertTrue(result, "返回的课程包含非直播课")
+
+    def test_8TeacherCourseOfLiving(self):
+        '''班主任下课程--线下课类型筛选'''
+        self.params = {
+            "keywords": "",  # keywords不传为全搜
+            "length": 20,
+            "page": 1,
+            "sort": 1000,  # 1000 默认 2000 学生最多 3000 最新建课 4000 进行中(暂时没有)
+            "status": 0,  # 1 未开课  2 进行中  3 已完结
+            "teacherId": Configuration.teacherId,
+            "type": 3,  # 课程类型,0全部,1直播课,2录播课,3线下课
+            "userType": 1  # 1 讲师 2 助教
+        }
+        returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
+        s.close()
+        self.assertEqual(returnObj['code'], 0)
+        self.assertEqual(returnObj['message'], "success")
+        courseList= returnObj['result']['list']['data']
+        #判断返回的课程都是直播课
+        result = True
+        for course in courseList:
+            if int(course['courseType']) != 3:
+                result =False
+                break
+        self.assertTrue(result, "返回的课程包含非直播课")
+
+    def test_9GetTeacherCourse_all(self):
+        """助教下的课程--默认排序 """
+        self.params = {
+            "keywords": "",#keywords不传为全搜
+            "length": 40,
+            "page": 1,
+            "sort": 1000,#1000 默认 2000 学生最多 3000 最新建课 4000 进行中(暂时没有)
+            "status": 0,#1 未开课  2 进行中  3 已完结
+            "teacherId":Configuration.teacherId,
+            "type": 0,#课程类型,0全部,1直播课,2录播课,3线下课
+            "userType": 2#1 讲师 2 助教
+        }
+        returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
+        s.close()
+        self.assertEqual(returnObj['code'],0)
+        self.assertEqual(returnObj['message'],"success")
+        self.assertEqual(returnObj['result']['list']['totalSize'],'5')
 
 if __name__ == "__main__":
     unittest.main()

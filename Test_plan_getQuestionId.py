@@ -24,11 +24,145 @@ class Test_GetQuestion(unittest.TestCase):
         cls.cursor = cls.connect.cursor()
     
     def setUp(self):
+        print('test start')
         self.url = Configuration.HostUrl +"/interface/plan/getQuestionId"
         self.v = Configuration.version
         
     #快速出题
-    def test_CreateQuestion1(self):
+    def test_CreateQuestionA(self):
+        """测试快速出题1个选项单选选题"""
+        answer = "A"
+        self.params = {"answerRight":answer,
+                                 "phraseId":1,
+                                 "planId":Configuration.Plan_Id
+                            }
+
+        returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
+        self.assertEqual(0, returnObj['code'], '返回状态码不正确')
+        self.assertEqual("success", returnObj['message'])
+        #t_course_plan_phrase表验证
+        sql = "SELECT * FROM  t_course_plan_phrase WHERE pk_plan_phrase={}".format(returnObj['result']['questId'])
+        self.cursor.execute(sql)
+        result = self.cursor.fetchone()
+        print(result['fk_plan'],result['fk_phrase'])
+        self.assertEqual(answer,result['answer_right'],"数据库表里不存在此条记录")
+        s.close()
+
+    def test_CreateQuestionB(self):
+        """测试快速出题2个选项多选题"""
+        answer = "A,B"
+        self.params = {"answerRight":answer,
+                                 "phraseId":2,
+                                 "planId":Configuration.Plan_Id
+                            }
+
+        returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
+        self.assertEqual(0, returnObj['code'], '返回状态码不正确')
+        self.assertEqual("success", returnObj['message'])
+        #t_course_plan_phrase表验证
+        sql = "SELECT * FROM  t_course_plan_phrase WHERE pk_plan_phrase={}".format(returnObj['result']['questId'])
+        self.cursor.execute(sql)
+        result = self.cursor.fetchone()
+        print(result['fk_plan'],result['fk_phrase'])
+        self.assertEqual(answer,result['answer_right'],"数据库表里不存在此条记录")
+        s.close()
+
+    def test_CreateQuestionC(self):
+        """测试快速出题3个选项多选题"""
+        answer = "A,B,C"
+        self.params = {"answerRight":answer,
+                                 "phraseId":3,
+                                 "planId":Configuration.Plan_Id
+                            }
+
+        returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
+        self.assertEqual(0, returnObj['code'], '返回状态码不正确')
+        self.assertEqual("success", returnObj['message'])
+        #t_course_plan_phrase表验证
+        sql = "SELECT * FROM  t_course_plan_phrase WHERE pk_plan_phrase={}".format(returnObj['result']['questId'])
+        self.cursor.execute(sql)
+        result = self.cursor.fetchone()
+        print(result['fk_plan'],result['fk_phrase'])
+        self.assertEqual(answer,result['answer_right'],"数据库表里不存在此条记录")
+        s.close()
+
+    def test_CreateQuestionD(self):
+        """测试快速出题4个选项多选题"""
+        answer = "A,B,C,D"
+        self.params = {"answerRight":answer,
+                                 "phraseId":4,
+                                 "planId":Configuration.Plan_Id
+                            }
+
+        returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
+        self.assertEqual(0, returnObj['code'], '返回状态码不正确')
+        self.assertEqual("success", returnObj['message'])
+        #t_course_plan_phrase表验证
+        sql = "SELECT * FROM  t_course_plan_phrase WHERE pk_plan_phrase={}".format(returnObj['result']['questId'])
+        self.cursor.execute(sql)
+        result = self.cursor.fetchone()
+        print(result['fk_plan'],result['fk_phrase'])
+        self.assertEqual(answer,result['answer_right'],"数据库表里不存在此条记录")
+        s.close()
+
+    def test_CreateQuestionE(self):
+        """测试快速出题5个选项多选题"""
+        answer = "A,B,C,D,E"
+        self.params = {"answerRight":answer,
+                                 "phraseId":5,
+                                 "planId":Configuration.Plan_Id
+                            }
+
+        returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
+        self.assertEqual(0, returnObj['code'], '返回状态码不正确')
+        self.assertEqual("success", returnObj['message'])
+        #t_course_plan_phrase表验证
+        sql = "SELECT * FROM  t_course_plan_phrase WHERE pk_plan_phrase={}".format(returnObj['result']['questId'])
+        self.cursor.execute(sql)
+        result = self.cursor.fetchone()
+        print(result['fk_plan'],result['fk_phrase'])
+        self.assertEqual(answer,result['answer_right'],"数据库表里不存在此条记录")
+        s.close()
+
+    def test_CreateQuestionF(self):
+        """测试快速出题6个选项多选题"""
+        answer = "A,B,C,D,E,F"
+        self.params = {"answerRight":answer,
+                                 "phraseId":6,
+                                 "planId":Configuration.Plan_Id
+                            }
+
+        returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
+        self.assertEqual(0, returnObj['code'], '返回状态码不正确')
+        self.assertEqual("success", returnObj['message'])
+        #t_course_plan_phrase表验证
+        sql = "SELECT * FROM  t_course_plan_phrase WHERE pk_plan_phrase={}".format(returnObj['result']['questId'])
+        self.cursor.execute(sql)
+        result = self.cursor.fetchone()
+        print(result['fk_plan'],result['fk_phrase'])
+        self.assertEqual(answer,result['answer_right'],"数据库表里不存在此条记录")
+        s.close()
+
+    def test_CreateQuestionG(self):
+        """测试快速出题7个选项多选题"""
+        answer = "A,B,C,D,E,F,G"
+        self.params = {"answerRight":answer,
+                                 "phraseId":7,
+                                 "planId":Configuration.Plan_Id
+                            }
+
+        returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
+        self.assertEqual(0, returnObj['code'], '返回状态码不正确')
+        self.assertEqual("success", returnObj['message'])
+        #t_course_plan_phrase表验证
+        sql = "SELECT * FROM  t_course_plan_phrase WHERE pk_plan_phrase={}".format(returnObj['result']['questId'])
+        self.cursor.execute(sql)
+        result = self.cursor.fetchone()
+        print(result['fk_plan'],result['fk_phrase'])
+        self.assertEqual(answer,result['answer_right'],"数据库表里不存在此条记录")
+        s.close()
+
+    def test_CreateQuestionH(self):
         """测试快速出题8个选项多选题"""
         answer = "A,B,C,D,E,F,G,H"
         self.params = {"answerRight":answer,
@@ -47,7 +181,7 @@ class Test_GetQuestion(unittest.TestCase):
         self.assertEqual(answer,result['answer_right'],"数据库表里不存在此条记录")
         s.close()
 
-    def test_CreateQuestion2(self):
+    def test_CreateQuestionI(self):
         """测试快速出题判断题"""
         answer = "A"
         self.params = {"answerRight":answer,
@@ -66,9 +200,9 @@ class Test_GetQuestion(unittest.TestCase):
         self.assertEqual(answer,result['answer_right'],"数据库表里不存在此条记录")
         s.close()
 
-    def test_CreateQuestion3(self):
+    def test_CreateQuestionJ(self):
         """测试快速出题填空题"""
-        answer = "大家好"
+        answer = "好/Abｑｂ大。"
         self.params = {"answerRight":answer,
                                  "phraseId":14,
                                  "planId":Configuration.Plan_Id
@@ -86,7 +220,7 @@ class Test_GetQuestion(unittest.TestCase):
         s.close()
 
     #互动问答
-    def test_CreateQuestion4(self):
+    def test_CreateQuestionK(self):
         """测试询问需要"""
         answer = "A"
         self.params = {"answerRight":answer,
@@ -106,7 +240,7 @@ class Test_GetQuestion(unittest.TestCase):
         s.close()
 
 
-    def test_CreateQuestion5(self):
+    def test_CreateQuestionL(self):
         """测试询问明白"""
         answer = "A"
         self.params = {"answerRight": answer,
@@ -125,7 +259,7 @@ class Test_GetQuestion(unittest.TestCase):
         self.assertEqual(answer, result['answer_right'], "数据库表里不存在此条记录")
         s.close()
 
-    def test_CreateQuestion6(self):
+    def test_CreateQuestionM(self):
         """测试询问可以"""
         answer = "A"
         self.params = {"answerRight":answer,
