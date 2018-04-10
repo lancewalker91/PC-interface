@@ -32,11 +32,11 @@ class Test(unittest.TestCase):
 
     def test_getGroupStudent2_withnotClassId(self):
         '''不传入ClassID'''
-        self.params = {}
+        self.params = {"classId":''}
         returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
-        self.assertEqual(returnObj['errMsg'], '请求key验证失败')
-        self.assertEqual(1002, returnObj['code'], '返回验证码错误')
-        self.assertEqual('access key valid failed', returnObj['message'])
+        self.assertEqual(returnObj['errMsg'], '请求参数为空')
+        self.assertEqual(1000, returnObj['code'], '返回验证码错误')
+        self.assertEqual('request param empty', returnObj['message'])
         s.close()
 
     def test_getGroupStudent3_withNotExistClassID(self):

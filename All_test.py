@@ -40,6 +40,8 @@ def new_report(testreport):
     return file_new
 
 if __name__ == '__main__':
+    #test_dir = r'C:\Users\Administrator\Desktop\test\PC-interface'
+    #test_report = r'C:\Users\Administrator\Desktop\test\PC-interface\HTML_report'
     test_dir = r'C:\apache-tomcat-9.0.5\webapps\Jenkins\workspace\PC-interface\PC-interface'
     test_report = r'C:\apache-tomcat-9.0.5\webapps\Jenkins\workspace\PC-interface\PC-interface\HTML_report'
     discover = unittest.defaultTestLoader.discover(test_dir, pattern='Test*.py')

@@ -34,6 +34,7 @@ class Test_startClass(unittest.TestCase):
         sql = "SELECT status FROM `t_course_plan` WHERE pk_plan={}".format(Configuration.Plan_Id)
         result = DB.fetchone_fromDB(cursor, sql)
         self.assertEqual(3,result['status'],"开始上课后，排课状态不是直播中")
+        cursor.close()
     
     def test_2getPlayStream(self):
         '''测试获取音视频流信息'''

@@ -28,6 +28,7 @@ class Post_Params:
         params['key'] = TestProvide.generateKey(timeStamp, params['params'])
         print("Url: {} \nParameter:{}".format(self.url,
                                                json.dumps(params, separators=(',', ':'), ensure_ascii=False)))
+        #response = self.s.post(self.url,json.dumps(params))
         response = self.s.post(self.url, data=json.dumps(params, separators=(',', ':')))
         response.encoding = "utf-8"
         returnObj = json.loads(response.text)

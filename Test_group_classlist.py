@@ -37,11 +37,12 @@ class Test_AssiantTeacherGroups(unittest.TestCase):
 
     def test_3getGroupList_withnotClassId(self):
         '''不传入classID'''
-        self.params =  {}
+        self.params =  {"classId": ''}
         returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
-        self.assertEqual(returnObj['errMsg'], '请求key验证失败')
-        self.assertEqual(1002, returnObj['code'], '返回验证码错误')
-        self.assertEqual('access key valid failed',returnObj['message'])
+        self.assertEqual(0, returnObj['code'], '返回验证码错误')
+        self.assertEqual('success', returnObj['message'])
+        for i in returnObj['result']:
+            self.assertNotIn('未分组', i['groupName'])
         s.close()
 
 

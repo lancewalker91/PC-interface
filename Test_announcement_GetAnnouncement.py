@@ -47,11 +47,11 @@ class Test_getAnnounce(unittest.TestCase):
     def test_getAnnouncementWithoutfkplan(self):
         '''不传入fkplan'''
 
-        self.params = {}
+        self.params = { "fkPlan": ''}
         returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
-        self.assertEqual(1002, returnObj['code'], '返回状态码不正确')
-        self.assertEqual("access key valid failed", returnObj['message'])
-        self.assertEqual('请求key验证失败', returnObj['errMsg'])
+        self.assertEqual(1001, returnObj['code'], '返回状态码不正确')
+        self.assertEqual("missed required param", returnObj['message'])
+        self.assertEqual('缺少必传参数', returnObj['errMsg'])
         s.close()
 
 if __name__ == "__main__":

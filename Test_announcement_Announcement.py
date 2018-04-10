@@ -8,7 +8,6 @@ import unittest
 from Provide import Configuration
 import pymysql
 import pymysql.cursors
-import os
 from Provide.post_params import Post_Params
 
 class Test_Announcement(unittest.TestCase):

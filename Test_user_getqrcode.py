@@ -6,7 +6,7 @@ Updated on Mar 29 2018
 '''
 
 import unittest
-from Provide import Configuration, Confirm
+from Provide import Configuration
 from Provide.post_params import Post_Params
 
 
@@ -23,7 +23,7 @@ class Test_user_getqrcode(unittest.TestCase):
         pass
 
     def test_user_getqrcode1(self):
-        """获取李涛的二维码"""
+        """获取李涛的二维码（17600117243）"""
         self.params = {"userId":42}
         returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
         s.close()
@@ -32,7 +32,7 @@ class Test_user_getqrcode(unittest.TestCase):
         self.assertEqual('http://testf.gn100.com/5,04594ba2cc1521',returnObj['result']['qrurl'])
 
     def test_user_getqrcode2(self):
-        """获取李涛的二维码"""
+        """获取litao测试名字长度影响显示的二维码（18671595783）"""
         self.params = {"userId":44}
         returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
         s.close()
@@ -41,7 +41,7 @@ class Test_user_getqrcode(unittest.TestCase):
         self.assertEqual('http://testf.gn100.com/1,045951e3485bd1',returnObj['result']['qrurl'])
 
     def test_user_getqrcode3(self):
-        """获取李涛的二维码"""
+        """获取喻尧的二维码（13261232131）"""
         self.params = {"userId":2000106}
         returnObj, s = Post_Params(self.v, self.url, self.params).psot_params_returnObj()
         s.close()

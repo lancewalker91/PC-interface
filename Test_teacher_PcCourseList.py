@@ -167,7 +167,7 @@ class Test_TeacherCourseList(unittest.TestCase):
         '''班主任下课程--最新建课排序'''
         self.params = {
             "keywords": "",  # keywords不传为全搜
-            "length": 20,
+            "length": 100,
             "page": 1,
             "sort": 3000,  # 1000 默认 2000 学生最多 3000 最新建课 4000 进行中(暂时没有)
             "status": 0,  # 1 未开课  2 进行中  3 已完结
@@ -180,7 +180,7 @@ class Test_TeacherCourseList(unittest.TestCase):
         self.assertEqual(returnObj['code'], 0)
         self.assertEqual(returnObj['message'], "success")
         CourseList = returnObj['result']['list']['data']
-        self.assertEqual(CourseList[0]['courseName'],'testFor双师备课答题3Month')
+        self.assertEqual(CourseList[-1]['courseName'],'艺术学甄选')
 
     # 按课程类型筛选---直播课
 
