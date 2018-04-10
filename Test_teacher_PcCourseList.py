@@ -72,6 +72,7 @@ class Test_TeacherCourseList(unittest.TestCase):
         CourseSql = "SELECT c.`pk_course`,c.`title` FROM `t_course_teacher` AS t JOIN t_course AS c ON t.`fk_course`=c.`pk_course` WHERE  t.fk_user_teacher={} AND t.`is_teacher` =1 AND t.`status` = 1".format(Configuration.teacherId)
         cursor.execute(CourseSql)
         rows = cursor.fetchall()
+        print(rows )
         num = 0 
         for courseObj in returnObj['result']['list']['data']:
             for row in rows:

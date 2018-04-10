@@ -11,7 +11,7 @@ from datetime import datetime
 from Provide.post_params import Post_Params
 
 class Test_courseLivingPlan(unittest.TestCase):
-    '''测试获取当月直播列表接口测试/interface/course/PlanList'''
+    '''测试获取当月老师直播列表接口测试/interface/course/PlanList'''
 
     def setUp(self):
         print('test start')
