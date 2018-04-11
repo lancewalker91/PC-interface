@@ -18,14 +18,14 @@ version = "1.16.1"
 
 #db 建立连接信息
 db_host= "121.42.232.104"
-db_user = "michael"
-db_password = "michael"
+db_user = "****"
+db_password = "****"
 
 db_name = "db_course"
 
 #教师用户名和密码
-mobile="17600117243"
-password= "117243"
+mobile="*****"
+password= "*****"
 teacherId = 42
 
 #开始上课/继续上课PlanID

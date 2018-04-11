@@ -1,1 +1,2 @@
-# PC-interface
+## 云课PC客户端接口测试
+> 打开Provide.Configuration更改对应参数，可以选择对应的环境，数据库，课程等等；测试Test_course_PlanList接口时需要调用中间层，需要配置HOSTS 121.42.232.104  api.gn100.com ;设置完成好之后，运行All_test.py，里面修改代码设置发送邮件列表和生成测试报告的位置等，完成之后会自动生成HTML测试报告并发送至邮箱！
