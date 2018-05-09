@@ -276,7 +276,7 @@ class Test_TeacherCourseList(unittest.TestCase):
         s.close()
         self.assertEqual(returnObj['code'],0)
         self.assertEqual(returnObj['message'],"success")
-        self.assertEqual(returnObj['result']['list']['totalSize'],'5')
+        self.assertEqual(returnObj['result']['list']['totalSize'],'8')
 
 if __name__ == "__main__":
     unittest.main()
